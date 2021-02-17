@@ -1,0 +1,29 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://innova.com/models/soap/emp"
+           targetNamespace="http://innova.com/models/soap/emp"
+           elementFormDefault="qualified">
+
+    <xs:element name="getCovidRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="info" type="xs:string"/>
+                <xs:element name="rValue" type="xs:int"/>
+                <xs:element name="nDays" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCovidResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="covid" type="tns:covid"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="covid">
+        <xs:sequence>
+            <xs:element name="jsonInfo" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
