@@ -6,7 +6,11 @@ import hrw.verteilteSysteme.CovidWebService.CovidInfo.JHU;
 import hrw.verteilteSysteme.CovidWebService.CovidInfo.RKI;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
-
+/**
+ *
+ * @author Markus Meier, Leon Wagner und Leona Cerimi
+ *
+ */
 
 @Component
 public class CovidSoapRepository {

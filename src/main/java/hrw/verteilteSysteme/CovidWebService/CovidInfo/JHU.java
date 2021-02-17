@@ -10,7 +10,11 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+/**
+ *
+ * @author Markus Meier, Leon Wagner und Leona Cerimi
+ *
+ */
 public class JHU {
 	List<JhuDataSet>actualList= new ArrayList<>();
 	public List<JhuDataSet> getJHUCovidInfo() {

@@ -7,7 +7,11 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-
+/**
+ *
+ * @author Markus Meier, Leon Wagner und Leona Cerimi
+ *
+ */
 @Endpoint
 public class CovidSoapEndpoint {
     private static final String NAMESPACE_URI = "http://innova.com/models/soap/emp";

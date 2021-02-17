@@ -1,5 +1,9 @@
 package hrw.verteilteSysteme.CovidWebService.CovidInfo;
-
+/**
+ *
+ * @author Markus Meier, Leon Wagner und Leona Cerimi
+ *
+ */
 public class County {
 	private String name;
 	private double rNumber;

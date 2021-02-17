@@ -1,7 +1,11 @@
 package hrw.verteilteSysteme.CovidWebService.CovidInfo;
 
 import java.util.List;
-
+/**
+ *
+ * @author Markus Meier, Leon Wagner und Leona Cerimi
+ *
+ */
 public class CalculateCovidNumber {
 	private List<JhuDataSet> germanyInfoJHU;
 	private List<County> countyList;

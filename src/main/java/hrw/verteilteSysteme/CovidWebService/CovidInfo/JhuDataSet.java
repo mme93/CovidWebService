@@ -1,5 +1,9 @@
 package hrw.verteilteSysteme.CovidWebService.CovidInfo;
-
+/**
+ *
+ * @author Markus Meier, Leon Wagner und Leona Cerimi
+ *
+ */
 public class JhuDataSet {
 	String date;
 	int recovered,confirmed,deaths;
