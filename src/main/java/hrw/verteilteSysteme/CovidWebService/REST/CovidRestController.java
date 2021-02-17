@@ -27,7 +27,7 @@ public class CovidRestController {
 	}
 
 	@GetMapping("/allInfos/{rValue}/{day}")
-	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
+	@ApiResponse(description = "Liefert alle Informationen unserer Kennzahlen", responseCode = "200")
 	public String getAllInfos(@PathVariable("rValue") int rValue, @PathVariable("day") int day) {
 		loadCovidInfo();
 		JSONObject covindInfoJsonObj = new JSONObject();
@@ -53,7 +53,7 @@ public class CovidRestController {
 	}
 
 	@GetMapping("/date")
-	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
+	@ApiResponse(description = "Liefert das Datum des Datensatzes", responseCode = "200")
 	public String getDate() {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
@@ -65,7 +65,7 @@ public class CovidRestController {
 
 	// RKI Anforderungen
 	@GetMapping("/rValueTotalGermany")
-	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
+	@ApiResponse(description = "Liefert die Gesamtinfektionen", responseCode = "200")
 	public String getRValueTotalGermany() {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
@@ -76,7 +76,7 @@ public class CovidRestController {
 	}
 
 	@GetMapping("/totalTargetInfection/{rValue}")
-	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
+	@ApiResponse(description = "Liefert Anstieg der letzten 24h", responseCode = "200")
 	public String getTotalTargetInfection(@PathVariable("rValue") int rValue) {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
@@ -86,7 +86,8 @@ public class CovidRestController {
 	}
 
 	@GetMapping("/targetIncidenceForRValue/{rValue}/{day}")
-	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
+	@ApiResponse(description = "Liefert die Voraussage ueber die noch notwendigen Tage des Lockdowns bis zur\n" +
+			"\t//Erreichung einer definierten Inzidenz (r-Wert)", responseCode = "200")
 	public String getTargetIncidenceForRValue(@PathVariable("rValue") int rValue, @PathVariable("day") int day) {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
@@ -97,7 +98,7 @@ public class CovidRestController {
 
 	// JHU Anforderungen
 	@GetMapping("/averageIncrease/{day}")
-	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
+	@ApiResponse(description = "Liefert die durchschnittlicher Anstieg der letzten n Tage", responseCode = "200")
 	public String getAverageIncrease(@PathVariable("day") int day) {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
@@ -107,7 +108,7 @@ public class CovidRestController {
 	}
 
 	@GetMapping("/percentInfection")
-	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
+	@ApiResponse(description = "Liefert den Anstieg der letzten 24h", responseCode = "200")
 	public String getPercenteInfection() {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
@@ -117,7 +118,7 @@ public class CovidRestController {
 	}
 
 	@GetMapping("/totalInfection")
-	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
+	@ApiResponse(description = "Liefert die aktuelle Gesamtinfektionen", responseCode = "200")
 	public String getTotalInfection() {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
@@ -127,7 +128,7 @@ public class CovidRestController {
 	}
 	//Eigentlich: newInfectionLast24
 	@GetMapping("/newInfectionLastDay")
-	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
+	@ApiResponse(description = "Liefert die Neuinfektion in den letzten 24h", responseCode = "200")
 	public String getNewInfection() {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
