@@ -28,23 +28,22 @@ public class CovidRestController {
 
 	@GetMapping("/allInfos/{rValue}/{day}")
 	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
-	public String getAllInfos(@PathVariable("rValue") int rWerth, @PathVariable("day") int day) {
+	public String getAllInfos(@PathVariable("rValue") int rValue, @PathVariable("day") int day) {
 		loadCovidInfo();
 		JSONObject covindInfoJsonObj = new JSONObject();
 		covindInfoJsonObj.put("date", calculateCovidNumber.getGermanyInfoJHU()
 				.get(calculateCovidNumber.getGermanyInfoJHU().size() - 1).getDate()).toString();
 
-		covindInfoJsonObj.put("rWerthTotalGermany", calculateCovidNumber.getRWerthTotalGermanyRKI()).toString();
+		covindInfoJsonObj.put("rValueTotalGermany", calculateCovidNumber.getRValueTotalGermanyRKI()).toString();
 
-		covindInfoJsonObj.put("totalTargetInfection", calculateCovidNumber.getTotalTargetInfectionRKI(rWerth))
+		covindInfoJsonObj.put("totalTargetInfection", calculateCovidNumber.getTotalTargetInfectionRKI(rValue))
 				.toString();
 
-		covindInfoJsonObj.put("targetIncidenceForRWert", calculateCovidNumber.getTargetIncidenceForRWerthRKI(50,
-				calculateCovidNumber.getTotalTargetInfectionRKI(50), 7)).toString();
+		covindInfoJsonObj.put("targetIncidenceForRValue", calculateCovidNumber.getTargetIncidenceForRValueRKI(rValue,day)).toString();
 
 		covindInfoJsonObj.put("averageIncrease", calculateCovidNumber.getAverageIncreaseDayJHU(day)).toString();
 
-		covindInfoJsonObj.put("percentInfection", calculateCovidNumber.getIncreaseLasteDayJHU()).toString();
+		covindInfoJsonObj.put("percentInfection", calculateCovidNumber.getIncreaseLastDayJHU()).toString();
 
 		covindInfoJsonObj.put("totalInfection", calculateCovidNumber.getTotalInfectionsJHU()).toString();
 
@@ -67,10 +66,10 @@ public class CovidRestController {
 	// RKI Anforderungen
 	@GetMapping("/rValueTotalGermany")
 	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
-	public String getRWerthTotalGermany() {
+	public String getRValueTotalGermany() {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
-		obj.put("value", calculateCovidNumber.getRWerthTotalGermanyRKI()).toString();
+		obj.put("value", calculateCovidNumber.getRValueTotalGermanyRKI()).toString();
 		obj.put("info", "rValueTotalGermany").toString();
 		return obj.toString();
 
@@ -78,22 +77,21 @@ public class CovidRestController {
 
 	@GetMapping("/totalTargetInfection/{rValue}")
 	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
-	public String getTotalTargetInfection(@PathVariable("rValue") int rWerth) {
+	public String getTotalTargetInfection(@PathVariable("rValue") int rValue) {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
-		obj.put("value", calculateCovidNumber.getTotalTargetInfectionRKI(rWerth)).toString();
-		obj.put("info", "totalTargetInfection/" + rWerth).toString();
+		obj.put("value", calculateCovidNumber.getTotalTargetInfectionRKI(rValue)).toString();
+		obj.put("info", "totalTargetInfection/" + rValue).toString();
 		return obj.toString();
 	}
 
 	@GetMapping("/targetIncidenceForRValue/{rValue}/{day}")
 	@ApiResponse(description = "Liefert die totale Menge an Infektionszahlen", responseCode = "200")
-	public String getTargetIncidenceForRValue(@PathVariable("rValue") int rWerth, @PathVariable("day") int day) {
+	public String getTargetIncidenceForRValue(@PathVariable("rValue") int rValue, @PathVariable("day") int day) {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
-		obj.put("value", calculateCovidNumber.getTargetIncidenceForRWerthRKI(50,
-				calculateCovidNumber.getTotalTargetInfectionRKI(50), 7)).toString();
-		obj.put("info", "targetIncidenceForRWert/" + rWerth + "/" + day).toString();
+		obj.put("value", calculateCovidNumber.getTargetIncidenceForRValueRKI(rValue,day)).toString();
+		obj.put("info", "targetIncidenceForRValue/" + rValue + "/" + day).toString();
 		return obj.toString();
 	}
 
@@ -113,7 +111,7 @@ public class CovidRestController {
 	public String getPercenteInfection() {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
-		obj.put("value", calculateCovidNumber.getIncreaseLasteDayJHU()).toString();
+		obj.put("value", calculateCovidNumber.getIncreaseLastDayJHU()).toString();
 		obj.put("info", "percentInfection").toString();
 		return obj.toString();
 	}

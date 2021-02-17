@@ -33,7 +33,7 @@ public class CovidSoapRepository {
                 return covid;
             case "/increase":
                 covid = new Covid();
-                covid.setJsonInfo(new JSONObject().put("value",String.valueOf(calculateCovidNumber.getIncreaseLasteDayJHU())).toString());
+                covid.setJsonInfo(new JSONObject().put("value",String.valueOf(calculateCovidNumber.getIncreaseLastDayJHU())).toString());
             return covid;
             case "/average":
                 covid = new Covid();
@@ -41,7 +41,7 @@ public class CovidSoapRepository {
                 return covid;
             case "/incidencevalue":
                 covid = new Covid();
-                covid.setJsonInfo(new JSONObject().put("value",String.valueOf(calculateCovidNumber.getRWerthTotalGermanyRKI())).toString());
+                covid.setJsonInfo(new JSONObject().put("value",String.valueOf(calculateCovidNumber.getRValueTotalGermanyRKI())).toString());
                 return covid;
             case "/incidencegoal":
                 covid = new Covid();
@@ -49,7 +49,7 @@ public class CovidSoapRepository {
                 return covid;
             case "/days":
                 covid = new Covid();
-                covid.setJsonInfo(new JSONObject().put("value",String.valueOf(calculateCovidNumber.getTargetIncidenceForRWerthRKI(rValue,calculateCovidNumber.getTotalInfectionsJHU(),nDays))).toString());
+                covid.setJsonInfo(new JSONObject().put("value",String.valueOf(calculateCovidNumber.getTargetIncidenceForRValueRKI(rValue,nDays))).toString());
                 return covid;
             default:
                 covid = new Covid();
