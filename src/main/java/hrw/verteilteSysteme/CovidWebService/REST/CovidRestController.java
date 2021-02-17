@@ -21,8 +21,8 @@ public class CovidRestController {
 		calculateCovidNumber.setGermanyInfoJHU(new JHU().getJHUCovidInfo());
 	}
 
-	@GetMapping("/allInfos/{rWerth}/{day}")
-	public String getAllInfos(@PathVariable("rWerth") int rWerth, @PathVariable("day") int day) {
+	@GetMapping("/allInfos/{rValue}/{day}")
+	public String getAllInfos(@PathVariable("rValue") int rWerth, @PathVariable("day") int day) {
 		loadCovidInfo();
 		JSONObject covindInfoJsonObj = new JSONObject();
 		covindInfoJsonObj.put("date", calculateCovidNumber.getGermanyInfoJHU()
@@ -58,18 +58,18 @@ public class CovidRestController {
 	}
 
 	// RKI Anforderungen
-	@GetMapping("/rWerthTotalGermany")
+	@GetMapping("/rValueTotalGermany")
 	public String getRWerthTotalGermany() {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
 		obj.put("value", calculateCovidNumber.getRWerthTotalGermanyRKI()).toString();
-		obj.put("info", "rWerthTotalGermany").toString();
+		obj.put("info", "rValueTotalGermany").toString();
 		return obj.toString();
 
 	}
 
-	@GetMapping("/totalTargetInfection/{rWerth}")
-	public String getTotalTargetInfection(@PathVariable("rWerth") int rWerth) {
+	@GetMapping("/totalTargetInfection/{rValue}")
+	public String getTotalTargetInfection(@PathVariable("rValue") int rWerth) {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
 		obj.put("value", calculateCovidNumber.getTotalTargetInfectionRKI(rWerth)).toString();
@@ -77,8 +77,8 @@ public class CovidRestController {
 		return obj.toString();
 	}
 
-	@GetMapping("/targetIncidenceForRWert/{rWerth}/{day}")
-	public String getTargetIncidenceForRWert(@PathVariable("rWerth") int rWerth, @PathVariable("day") int day) {
+	@GetMapping("/targetIncidenceForRValue/{rValue}/{day}")
+	public String getTargetIncidenceForRValue(@PathVariable("rValue") int rWerth, @PathVariable("day") int day) {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
 		obj.put("value", calculateCovidNumber.getTargetIncidenceForRWerthRKI(50,
@@ -89,7 +89,7 @@ public class CovidRestController {
 
 	// JHU Anforderungen
 	@GetMapping("/averageIncrease/{day}")
-	public String getAverageIncreaseDay(@PathVariable("day") int day) {
+	public String getAverageIncrease(@PathVariable("day") int day) {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
 		obj.put("value", calculateCovidNumber.getAverageIncreaseDayJHU(day)).toString();
@@ -114,8 +114,8 @@ public class CovidRestController {
 		obj.put("info", "totalInfection").toString();
 		return obj.toString();
 	}
-
-	@GetMapping("/newInfection24")
+	//Eigentlich: newInfectionLast24
+	@GetMapping("/newInfectionLastDay")
 	public String getNewInfection() {
 		loadCovidInfo();
 		JSONObject obj = new JSONObject();
